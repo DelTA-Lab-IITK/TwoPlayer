@@ -184,7 +184,7 @@
 
 	</style>
 	<title>
-		PDUN
+		TWoPlayer
 	</title>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141788472-1"></script>
@@ -234,12 +234,9 @@
 			<hr>
 			<p class="sz15 bold">Abstract:</p>
 			<div class="thumbnail" style="float:right; margin-left: 20px" >
-					<img src="static/intro.png" alt="l0" style="max-width:400px">
+					<img src="static/cvpr_motivation.png" alt="l0" style="max-width:400px">
 					<div class="caption" style="max-width:400px">
-						<p>Proposed Probabilistic Diversity and Uncertainty Network (PDUN) consists of three parts, viz. a) Probabilistic
-						Representation Module encodes image feature with a question and history feature in an attentive manner. b) Diversity
-						module captures the diversity, and diverse answer is generated using Variational Auto-Encoder. c) Uncertainty module
-						predicts uncertainty of the network.</p>
+						<p>Attention mask vs visual explanation mask (Grad-CAM)</p>
 					</div>
 			</div>
 				<p class="sz12">
@@ -261,55 +258,25 @@
 		</div>
 	</div>
 
-	<div class="thumbnail" style="text-align: center" >
-		<img src="static/motivation.png" alt="l2">
-		<hr>
-		<div class="caption" style="text-align: left !important;">
-			<p>
-			Results were showing the certainty of the correct class increases from baseline model [9] to our proposed
-			uncertainty model (PDUN). In this figure, we show the top 2 class confidence score of the question, "Is this a park?".
-			In the baseline model focus on woman, guitar and chair and predicts "NO," which is confused with the correct prediction
-			of the answer, whether it is a park or not. PDUN model minimizes the uncertainty and predicts the correct answer "Yes"
-			with a high confidence score.
-			</p>
-		</div>
-	</div>
 
 
 	<p class="sz15 bold">
 		<br>
-		PDUN Model:
+		PAAN Model:
 	</p>
 	<div class="thumbnail" style="float:right; margin-left: 20px" >
-		<img src="static/model_PDUN.png" alt="l3">
+		<img src="static/cvpr_complete.png" alt="l3">
 		<hr>
 		<div class="caption">
-			<p>Probabilistic Diversity Uncertainty Network(PDUN), Bayesian CNN/LSTM is used to obtain the embeddings $g_i,f_i,h_i$
-			which is then fused using the Fusion Module to get $e_f$. Then correlation is found between fused embedding with answer
-			option embedding. Finally, variance and logits output are obtained using MLP, which is then used in Logits
-			Reparameterization Trick(LRT) to get final softmax output.</p>
+			<p>Illustration of model PAAN and its attention mask. Image feature and question feature are obtained using CNN and LSTM
+			respectively. Attention mask is then obtained using these features and classification of the answer is done based on the
+			attended feature. We have improved the attention mask with the visual explanation approaches based on Grad-CAM.</p>
 		</div>
 	</div>
 
-<p class="sz15 bold">
-	<br>
-	RUAM Model:
-</p>
-<div class="thumbnail" style="float:right; margin-left: 20px">
-	<img src="static/RUAM.png" alt="l4">
-	<hr>
-	<div class="caption">
-		<p>Reverse Uncertainty based Attention Map (RUAM): We obtain attention embedding $f_i$ from the attention network $G_f$
-		using image, question and history embeddings $g_i,g_q,g_h$. Then we classify into answer class and obtain the
-		uncertainty present in the data. Then we obtain reverse uncertainty map with will combine with attention map to get
-		better confidence on the attention map as shown in the figure.</p>
-	</div>
-</div>
-
-
 
 	<p class="sz15 bold">
-		Some example of visual dialog using our method:
+		Some example of visual question answering using our method:
 	</p>
 
 
@@ -317,78 +284,37 @@
 			<br>
 			Results:	</p>
 	<div class="thumbnail" style="float:right; margin-left: 20px">
-		<img src="static/result.png" alt="l5">
+		<img src="static/all_att_visual_1_5_9.jpg" alt="l5">
+			<img src="static/all_grad_visual_1_5_9.jpg" alt="l5">
 		<hr>
 		<div class="caption">
-			<p>Figure shows the difference between aleatoric dialog results and baseline dialog results. In this figure, the first row
-			refers to Grad-CAM visualization of first example for baseline visual dialog model and second row refers to Grad-CAM
-			visualization of first example for Aleatoric visual dialog model and same scheme is followed for next 2 rows. The first
-			column indicates target Image and corresponding caption and starting from second column is the visualization of rounds
-			of dialog from round 1 to 10.</p>
+			<p>Examples with different approaches in each column for improving attention using explanation in a self supervised manner.
+			The first column indicates the given target image and its question and answer. Starting from second column, it indicates
+			the Attention map (left) / Grad-CAM map (right) for Stack Attention Network, MSE based approach, Coral based approach,
+			MMD based approach, Adversarial based approach respectively.</p>
 		</div>
 	</div>
 
-
-
-
-	<p class="sz15 bold">
-	</p>
+<!-- 
 	<div class="thumbnail" style="float:right; margin-left: 20px">
-		<img src="static/result_1.png" alt="l6">
+		<img src="static/all_grad_visual_1_5_9.jpg" alt="l5">
+		<img src="static/all_grad_visual_1_5_9.jpg" alt="l5">
 		<hr>
-		<!-- <div class="caption">
-			<p>Reverse Uncertainty based Attention Map (RUAM): We obtain attention embedding $f_i$ from the attention network
-				$G_f$
-				using image, question and history embeddings $g_i,g_q,g_h$. Then we classify into answer class and obtain the
-				uncertainty present in the data. Then we obtain reverse uncertainty map with will combine with attention map to
-				get
-				better confidence on the attention map as shown in the figure.</p>
-		</div> -->
-	</div>
-
-		<p class="sz15 bold">
-				<br>
-				MC-Sampling for a particular turn of a particular example:
-		</p>
-		<div class="thumbnail" style="float:right; margin-left: 20px">
-			<img src="static/mc_question.png" alt="l7">
-			<hr>
-			<div class="caption">
-				<p>We visualize the multiple outputs from the Bayesian neural network. We took 100 sample from the posterior distribution
-				of dialog model for particular image, particular question. It shows how Grad-CAM is flowing for particular image,
-				particular question.</p>
-			</div>
+		<div class="caption">
+			<p>Figure shows the difference between aleatoric dialog results and baseline dialog results. In this figure, the
+				first row
+				refers to Grad-CAM visualization of first example for baseline visual dialog model and second row refers to
+				Grad-CAM
+				visualization of first example for Aleatoric visual dialog model and same scheme is followed for next 2 rows. The
+				first
+				column indicates target Image and corresponding caption and starting from second column is the visualization of
+				rounds
+				of dialog from round 1 to 10.</p>
 		</div>
+	</div> -->
 
-		<p class="sz15 bold">
-		<br>
-		MC-Sampling for a particular turn of a particular example:
-		</p>
-		<div class="thumbnail" style="text-align:center">
-			<img src="static/aleatoric_uncertainty_ques_gradcam_100.gif" style="max-width:200px">
-			<hr>
-		</div>
 
-<!-- 	
-<p class="sz15 bold">
-	Cite us
-</p>
-
- 
-<div class="well" style="font-family: monospace">
-@inproceedings{Patro_ICCV2019,
-	<br>
-  title={U-CAM: Visual Explanation using Uncertainty based Class Activation Maps},
-	<br>
-  author={Badri N. Patro and Mayank Lunayach and Shivansh Patel and Vinay P. Namboodiri},
-	<br>
-  booktitle={arXiv preprint arXiv:1908.06306},
-<br>
-  year={2019}}
-</div>
-
--->
-
+	
 </div>
 </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
