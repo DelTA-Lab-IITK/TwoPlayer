@@ -234,9 +234,9 @@
 			<hr>
 			<p class="sz15 bold">Abstract:</p>
 			<div class="thumbnail" style="float:right; margin-left: 20px" >
-					<img src="static/cvpr_motivation.png" alt="l0" style="max-width:400px">
+					<img src="static/cvpr_motivation_new.png" alt="l0" style="max-width:400px">
 					<div class="caption" style="max-width:400px">
-						<p>Attention mask vs visual explanation mask (Grad-CAM)</p>
+						<p>This figure shows improvement of the Attention mask  and Explanation mask (Grad-CAM) using self supervised manner.</p>
 					</div>
 			</div>
 				<p class="sz12">
@@ -282,38 +282,95 @@
 
 	<p class="sz15 bold">	
 			<br>
-			Results:	</p>
+			Attention Visualisation Results:	</p>
 	<div class="thumbnail" style="float:right; margin-left: 20px">
 		<img src="static/all_att_visual_1_5_9.jpg" alt="l5">
-			<img src="static/all_grad_visual_1_5_9.jpg" alt="l5">
+			<img src="static/all_att_visual_13_6_8.jpg" alt="l5">
 		<hr>
 		<div class="caption">
 			<p>Examples with different approaches in each column for improving attention using explanation in a self supervised manner.
 			The first column indicates the given target image and its question and answer. Starting from second column, it indicates
-			the Attention map (left) / Grad-CAM map (right) for Stack Attention Network, MSE based approach, Coral based approach,
+			the Attention map for Stack Attention Network, MSE based approach, Coral based approach,
 			MMD based approach, Adversarial based approach respectively.</p>
 		</div>
 	</div>
 
-<!-- 
-	<div class="thumbnail" style="float:right; margin-left: 20px">
-		<img src="static/all_grad_visual_1_5_9.jpg" alt="l5">
-		<img src="static/all_grad_visual_1_5_9.jpg" alt="l5">
-		<hr>
-		<div class="caption">
-			<p>Figure shows the difference between aleatoric dialog results and baseline dialog results. In this figure, the
-				first row
-				refers to Grad-CAM visualization of first example for baseline visual dialog model and second row refers to
-				Grad-CAM
-				visualization of first example for Aleatoric visual dialog model and same scheme is followed for next 2 rows. The
-				first
-				column indicates target Image and corresponding caption and starting from second column is the visualization of
-				rounds
-				of dialog from round 1 to 10.</p>
-		</div>
-	</div> -->
 
 
+<p class="sz15 bold">
+	<br>
+	Explanation Visualisation Results: </p>
+<div class="thumbnail" style="float:right; margin-left: 20px">
+	<img src="static/all_grad_visual_1_5_9.jpg" alt="l5">
+	<img src="static/all_grad_visual_13_6_8.jpg" alt="l5">
+	<hr>
+	<div class="caption">
+		<p>Examples with different approaches in each column for improving attention using explanation in a self supervised
+			manner.
+			The first column indicates the given target image and its question and answer. Starting from second column, it
+			indicates
+			the Grad-CAM map for Stack Attention Network, MSE based approach, Coral based
+			approach,
+			MMD based approach, Adversarial based approach respectively.</p>
+	</div>
+</div>
+
+
+<p class="sz15 bold">
+	<br>
+	Warm-Start model Results: </p>
+<div class="thumbnail" style="float:right; margin-left: 20px">
+	<img src="static/att1.jpg" alt="l5">
+	<img src="static/att2.jpg" alt="l5">
+	<img src="static/att3.jpg" alt="l5">
+	<hr>
+	<div class="caption">
+		<p>Visualisation of attention map after epoch-10, epoch-50, epoch-100, epoch-200.</p>
+	</div>
+</div>
+
+
+<p class="sz15 bold">
+	<br>
+	Statistical Significance Analysis: </p>
+<div class="thumbnail" style="float:right; margin-left: 20px">
+	<img src="static/abalation.jpg" alt="l5">
+	<hr>
+	<div class="caption">
+		<p>The mean rank of all the models on the basis of all scores are plotted on the x- axis. CD=3.3722, p=0.0003461. Here our
+		PAAN model and others variants are described in section-4.1 of the main paper. The colored lines between the two models
+		represents that these models are not significantly different from each other.</p>
+	</div>
+</div>
+
+
+
+
+<p class="sz15 bold">
+	<br>
+	Visual Dialog Results for PAAN model: </p>
+<div class="thumbnail" style="float:right; margin-left: 20px">
+	<img src="static/grad_att_visdial.jpg" alt="l5">
+	<hr>
+	<div class="caption">
+		<p>This figure shows visual explanation and attention map for Visual Dialog task. The first row contains grad cam results
+		and second contains attention results for Adversarial approaches. We have shown all the dialog turns present in the
+		dataset.</p>
+	</div>
+</div>
+
+
+
+<p class="sz15 bold">
+	<br>
+	Attention map Variance : </p>
+<div class="thumbnail" style="float:right; margin-left: 20px">
+	<img src="static/image_final.jpg" alt="l5">
+	<hr>
+	<div class="caption">
+		<p>Variance in attention map for the same question to the image and its composite image in VQA2.0 dataset.</p>
+	</div>
+</div>
 	
 </div>
 </div>
